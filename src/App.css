@@ -8,10 +8,6 @@
     font-family: 'Sans', 'Courier New', Courier, monospace;
 }
 
-.main {
-    padding: 10px;
-}
-
 .main-content {
-    margin: 15px;
+    margin: 1rem;
 }

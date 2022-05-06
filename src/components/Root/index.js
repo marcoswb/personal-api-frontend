@@ -41,7 +41,7 @@ export default function Root(){
 
   return (
       <div>
-        <nav class='main'>
+        <nav>
             <h1>
                 <a id='link_root_path' href="/">{full_name}</a>
             </h1>

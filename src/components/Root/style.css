@@ -1,136 +1,35 @@
-nav {
-	height: 80px;
-    display: flex;
-    align-items: center;
-}
-
-a {
-    margin-left: 10px;
-    margin-right: auto;
-    text-decoration: none;
-    color: #FFFFFF;
-}
-
 #link_root_path {
     margin-left: 10px;
-    margin-right: auto;
 	font-size: 24px;
     text-decoration: none;
     color: #eda85f;
+}
+
+nav {
+    padding: 1rem;
+    padding-right: 2rem;
+	height: 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul {
+	display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    padding-left: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav h1 {
+    margin-right: auto;
 }
 
 a:hover {
     color: #eda85f;
 }
-
-ul {
-	display: -webkit-flex;
-	display: flex;
-    list-style: none;
-}
-
-ul li a {
-    margin: 0px 10px;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 100%;
-    vertical-align: baseline;
-    text-decoration: none;
-    background: transparent;
-}
-
-/* h1 {
-    margin-left: 10px;
-    margin-right: auto;
-	font-size: 24px;
-	font-family: 'Rock Salt', cursive;
-} */
-
-/* ul li a:hover {
-    color: #eda85f;
-} */
-
-/* .nav__icon, .nav__icon span {
-    display: none;
-} */
-
-/* .nav__icon {
-    width: 36px;
-    height: 28px;
-    margin-right: 10px;
-    position: relative;
-    cursor: pointer;
-} */
-
-/* .nav__icon span {
-    background: rgba(255, 255, 255, 1);
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    border-radius: 4px;
-} */
-
-/* .nav__icon span:nth-of-type(1) {
-    top: 0;
-}
-
-.nav__icon span:nth-of-type(2) {
-    top: 12px;
-}
-
-.nav__icon span:nth-of-type(3) {
-    bottom: 0;
-}
-
-.nav__icon.active span:nth-of-type(1) {
-    -webkit-transform: translateY(12px) rotate(-45deg);
-    transform: translateY(12px) rotate(-45deg);
-}
-
-.nav__icon.active span:nth-of-type(2) {
-    display: none;
-}
-
-.nav__icon.active span:nth-of-type(3) {
-    -webkit-transform: translateY(-12px) rotate(45deg);
-    transform: translateY(-12px) rotate(45deg);
-} */
-
-/* @media only screen and (max-width: 800px) {
-
-	ul {
-        flex-direction: column;
-        justify-content: center;
-		background: rgba(0, 0, 0, .8);
-        position: absolute;
-        top: 80px;
-        left: 0px;
-        width: 90%;
-        z-index: 980;
-    }
-
-    ul li {
-        padding: 10px;
-        text-align: center;
-    }
-
-    ul li a {
-		display: block;
-        background: transparent;
-        margin: 0px;
-        padding: 10px;
-    }
-
-    ul li a:hover {
-        color: #000;
-        background: #fff;
-    }
-
-    .nav__icon, .nav__icon span {
-        display: inline-block;
-        transition: all .4s;
-        box-sizing: border-box;
-        z-index: 999;
-    }
-} */
