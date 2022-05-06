@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import $ from 'jquery'
 
 import './style.css';
 
@@ -32,29 +33,72 @@ export default function Root(){
 
     fetchMyAPI()
   }, [])
-      
+
+  function handleClickToggleMenu(){
+    $(this).toggleClass('active');
+    $('#navbar').slideToggle();
+  }
+
   return (
       <div>
-        <h3>full_name:</h3>
-        <p>{full_name}</p>
-        <h3>name:</h3>
-        <p>{name}</p>
-        <h3>occupation:</h3>
-        <p>{occupation}</p>
-        <h3>number_phone:</h3>
-        <p>{number_phone}</p>
-        <h3>about:</h3>
-        <p>{about}</p>
-        <h3>skills:</h3>
-        {skills.map((x, i) => 
-          <p key={i}>{skills[i]['name']}: {skills[i]['link_icon']}</p>
-        )}
-        <h3>linkedin:</h3>
-        <p>{linkedin}</p>
-        <h3>github:</h3>
-        <p>{github}</p>
-        <h3>email:</h3>
-        <p>{email}</p>
+        <nav class='main'>
+            <h1>
+                <a id='link_root_path' href="/">{full_name}</a>
+            </h1>
+            <ul id="navbar">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/experience">Experiência</a>
+                </li>
+                <li>
+                    <a href="/formation">Formação</a>
+                </li>
+                <li>
+                    <a href="/projects">Projetos</a>
+                </li>
+                <li>
+                    <a href="/blog">Blog</a>
+                </li>
+                <li>
+                    <a href="/contacts">Contatos</a>
+                </li>
+            </ul>
+            <div className="nav__icon" onClick={handleClickToggleMenu}>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        <div class='main-content'>
+          <div>
+            <p>Olá eu sou {name},</p>
+            <p>{occupation}</p>
+
+            <h4>Vamos conversar? {number_phone}</h4>
+          </div>
+          <div>
+            <p>{about}</p>
+          </div>
+          <div>
+            <div>
+              <h3>skills:</h3>
+              {skills.map((x, i) => 
+                <p key={i}>{skills[i]['name']}: {skills[i]['link_icon']}</p>
+              )}
+            </div>
+            <div>
+              <h3>linkedin:</h3>
+              <p>{linkedin}</p>
+              <h3>github:</h3>
+              <p>{github}</p>
+              <h3>email:</h3>
+              <p>{email}</p>
+            </div>
+          </div>
+          
+        </div>
       </div>
   )
 }
