@@ -3,11 +3,27 @@
 * {
     padding: 0;
     margin: 0;
-    background-color: #47333c;
+    background-color: #191a1d;
     color: #FFFFFF;
     font-family: 'Sans', 'Courier New', Courier, monospace;
 }
 
 .main-content {
     margin: 1rem;
+}
+
+h1 {
+    color: #1E90FF;
+}
+
+h2 {
+    color: #00CED1;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1E90FF;
 }

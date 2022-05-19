@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import $ from 'jquery'
+import Navbar from '../navbar'
 
 import './style.css';
 
@@ -7,7 +8,7 @@ export default function Root(){
 
   const [full_name, setFullName] = useState('')
   const [name, setName] = useState('')
-  const [occupation, setOccupation] = useState('')
+  const [short_description, setShortDescription] = useState('')
   const [number_phone, setNumberPhone] = useState('')
   const [about, setAbout] = useState('')
   const [skills, setSkills] = useState([])
@@ -22,7 +23,7 @@ export default function Root(){
 
       setFullName(response['full_name'])
       setName(response['name'])
-      setOccupation(response['occupation'])
+      setShortDescription(response['short_description'])
       setNumberPhone(response['number_phone'])
       setAbout(response['about'])
       setSkills(response['skills'])
@@ -41,40 +42,11 @@ export default function Root(){
 
   return (
       <div>
-        <nav>
-            <h1>
-                <a id='link_root_path' href="/">{full_name}</a>
-            </h1>
-            <ul id="navbar">
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/experience">Experiência</a>
-                </li>
-                <li>
-                    <a href="/formation">Formação</a>
-                </li>
-                <li>
-                    <a href="/projects">Projetos</a>
-                </li>
-                <li>
-                    <a href="/blog">Blog</a>
-                </li>
-                <li>
-                    <a href="/contacts">Contatos</a>
-                </li>
-            </ul>
-            <div className="nav__icon" onClick={handleClickToggleMenu}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
+        <Navbar/>
         <div class='main-content'>
-          <div>
-            <p>Olá eu sou {name},</p>
-            <p>{occupation}</p>
+          <div id='carousel'>
+            <h1>Olá, meu nome é {name}.</h1>
+            <h2>{short_description}</h2>
 
             <h4>Vamos conversar? {number_phone}</h4>
           </div>
