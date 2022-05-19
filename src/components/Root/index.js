@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import $ from 'jquery'
 import Navbar from '../navbar'
 
 import './style.css';
 
 export default function Root(){
 
-  const [full_name, setFullName] = useState('')
   const [name, setName] = useState('')
   const [short_description, setShortDescription] = useState('')
   const [number_phone, setNumberPhone] = useState('')
@@ -21,7 +19,6 @@ export default function Root(){
       let response = await fetch(process.env.REACT_APP_ENDPOINT_API)
       response = await response.json()
 
-      setFullName(response['full_name'])
       setName(response['name'])
       setShortDescription(response['short_description'])
       setNumberPhone(response['number_phone'])
@@ -34,11 +31,6 @@ export default function Root(){
 
     fetchMyAPI()
   }, [])
-
-  function handleClickToggleMenu(){
-    $(this).toggleClass('active');
-    $('#navbar').slideToggle();
-  }
 
   return (
       <div>
