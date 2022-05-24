@@ -5,18 +5,16 @@
     color: #4169E1;
 }
 
-#carousel {
-    margin-bottom: 50px;
-    align-items: center;
-    justify-content: center;
-}
-
 nav {
-    padding: 1rem;
-    padding-right: 2rem;
+    padding: 1rem 3rem 1rem 3rem;
 	height: 5rem;
     display: flex;
     justify-content: space-between;
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    overflow:hidden;
 }
 
 nav ul {

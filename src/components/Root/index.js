@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../navbar'
+import Footer from '../footer'
 
 import './style.css';
 
@@ -7,7 +8,7 @@ export default function Root(){
 
   const [name, setName] = useState('')
   const [short_description, setShortDescription] = useState('')
-  const [number_phone, setNumberPhone] = useState('')
+  const [whatsapp_link, setWhatsappLink] = useState('')
   const [about, setAbout] = useState('')
   const [skills, setSkills] = useState([])
   const [linkedin, setLinkedin] = useState('')
@@ -21,7 +22,7 @@ export default function Root(){
 
       setName(response['name'])
       setShortDescription(response['short_description'])
-      setNumberPhone(response['number_phone'])
+      setWhatsappLink(`https://api.whatsapp.com/send/?phone=${response['number_phone']}&text=Olá ${response['name']}&app_absent=0`)
       setAbout(response['about'])
       setSkills(response['skills'])
       setLinkedin(response['linkedin_link'])
@@ -39,10 +40,9 @@ export default function Root(){
           <div id='carousel'>
             <h1>Olá, meu nome é {name}.</h1>
             <h2>{short_description}</h2>
-
-            <h4>Vamos conversar? {number_phone}</h4>
+            <a href={whatsapp_link}>Vamos conversar?</a>
           </div>
-          <div>
+          <div id='about'>
             <p>{about}</p>
           </div>
           <div>
@@ -61,8 +61,8 @@ export default function Root(){
               <p>{email}</p>
             </div>
           </div>
-          
         </div>
+        <Footer/>
       </div>
   )
 }

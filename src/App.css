@@ -9,7 +9,17 @@
 }
 
 .main-content {
-    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 5rem;
+    position:absolute;
+    top:5rem;
+    bottom:1rem;
+    left:0px;
+    right:0px;
+    overflow:auto;
 }
 
 h1 {

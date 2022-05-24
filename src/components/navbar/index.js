@@ -3,7 +3,7 @@ import $ from 'jquery'
 
 import './style.css';
 
-export default function NavBar(){
+export default function Footer(){
 
   const [full_name, setFullName] = useState('')
 

@@ -1,0 +1,11 @@
+#carousel {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 6rem;
+    margin-top: 2rem;
+}
+
+#about {
+    justify-content: center;
+    align-items: center;
+}
