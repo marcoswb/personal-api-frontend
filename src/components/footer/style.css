@@ -12,16 +12,16 @@ footer{
 }
 .footer-content{
     display: flex;
-    /* align-items: center;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
-    text-align: center; */
+    text-align: center;
 }
 .socials{
     list-style: none;
     display: flex;
-    /* align-items: center;
-    justify-content: center; */
+    align-items: center;
+    justify-content: center;
 }
 .socials li{
     margin: 0 10px;
@@ -30,11 +30,11 @@ footer{
     text-decoration: none;
     color: #fff;
     border: 1px solid white;
-    padding: 5px;
+    padding: 10px;
     border-radius: 50%;
 }
 .socials a i{
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     width: 20px;
     transition: color .4s ease;
 }
