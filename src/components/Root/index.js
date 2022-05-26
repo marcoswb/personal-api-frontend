@@ -39,13 +39,14 @@ export default function Root(){
           <div id='about'>
             <p>{about}</p>
           </div>
-          <div>
-            <div>
-              <h3>skills:</h3>
-              {skills.map((x, i) => 
-                <p key={i}>{skills[i]['name']}: {skills[i]['link_icon']}</p>
-              )}
-            </div>
+          <h3>Skills:</h3>
+          <div id='skills'>
+            {skills.map((x, i) =>
+              <div class='item-skill'>
+                <img src={skills[i]['link_icon']}/>
+                <p key={i}>{skills[i]['name']}</p>
+              </div>
+            )}
           </div>
         </div>
         <Footer/>

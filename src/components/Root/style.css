@@ -6,6 +6,23 @@
 }
 
 #about {
+    display: flex;
+    margin-bottom: 2rem;
     justify-content: center;
     align-items: center;
+}
+
+#skills {
+    padding-bottom: 1rem;
+}
+
+.item-skill {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.item-skill img{
+    width: 45px;
+    margin-right: 0.8rem;
+    margin-bottom: 1rem;
 }
