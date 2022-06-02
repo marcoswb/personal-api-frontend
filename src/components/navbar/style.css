@@ -26,6 +26,10 @@ nav ul li {
     padding-left: 2rem;
 }
 
+nav ul li a{
+    color: #FFFFFF;
+}
+
 nav h1 {
     margin-right: auto;
 }
