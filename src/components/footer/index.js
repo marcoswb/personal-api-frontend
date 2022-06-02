@@ -28,10 +28,10 @@ export default function Footer(){
     <footer>
       <div class="footer-content">
         <ul class="socials">
-          <li><a href={linkedin} target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
-          <li><a href={github} target="_blank"><i class="fa fa-github"></i></a></li>
-          <li><a href={email_link} target="_blank"><i class="fa fa-envelope"></i></a></li>
-          <li><a href={whatsapp_link} target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+          <li><a href={linkedin} target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin-square"></i></a></li>
+          <li><a href={github} target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></a></li>
+          <li><a href={email_link} target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a></li>
+          <li><a href={whatsapp_link} target="_blank" rel="noopener noreferrer"><i class="fa fa-whatsapp"></i></a></li>
         </ul>
       </div>
     </footer>

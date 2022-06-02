@@ -43,7 +43,7 @@ export default function Root(){
           <div id='skills'>
             {skills.map((x, i) =>
               <div class='item-skill'>
-                <img src={skills[i]['link_icon']}/>
+                <img src={skills[i]['link_icon']} alt='imagem da skill'/>
                 <p key={i}>{skills[i]['name']}</p>
               </div>
             )}
