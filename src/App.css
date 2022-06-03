@@ -10,11 +10,10 @@
 .main-content {
     display: flex;
     flex-direction: column;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    padding-bottom: 5rem;
+    padding: 3rem 3rem 5rem 3rem;
+    margin-top: 6rem;
     position:absolute;
-    top:5rem;
+    top: 2rem;
     bottom:1rem;
     left:0px;
     right:0px;
@@ -31,7 +30,11 @@ h2 {
 }
 
 h3 {
-    color: #00CED1;
+    color: #4169E1;
+}
+
+h4 {
+    color: #1E90FF;
 }
 
 a {

@@ -23,9 +23,12 @@ export default function Experience(){
       <div>
         <Navbar/>
         <div class='main-content'>
-          <h3>experiences:</h3>
           {experiences.map((x, i) => 
-            <p key={i}>{experiences[i]['company']}: {experiences[i]['ocuppation']}: {experiences[i]['period']}</p>
+          <div class='experience'>
+            <h2>{experiences[i]['company']}</h2>
+            <h4>{experiences[i]['ocuppation']}</h4>
+            <p key={i}>{experiences[i]['period']}</p>
+          </div>
           )}
         </div>
         <Footer/>
