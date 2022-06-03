@@ -23,9 +23,12 @@ export default function Formation(){
       <div>
         <Navbar/>
         <div class='main-content'>
-          <h3>formations:</h3>
           {formations.map((x, i) => 
-            <p key={i}>{formations[i]['formation']}: {formations[i]['institution']}: {formations[i]['period']}</p>
+          <div class='formation'>
+            <h2>{formations[i]['institution']}</h2>
+            <h4>{formations[i]['formation']}</h4>
+            <p key={i}>{formations[i]['period']}</p>
+          </div>
           )}
         </div>
         <Footer/>
