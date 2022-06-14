@@ -23,15 +23,15 @@ export default function Blog(){
       <div>
         <Navbar/>
         <div class='main-content'>
-          <h3>posts:</h3>
           {posts.map((x, i) =>
-            <>
-              <p key={i}>{posts[i]['name']}: {posts[i]['description']}: {posts[i]['link']}</p>
-              <h4>categorias</h4>
+            <a href={posts[i]["link"]} target="_blank" class='post'>
+              <h2>{posts[i]['name']}</h2>
+              <h4>{posts[i]['description']}</h4>
+              {/* <h4>categorias</h4>
               {posts[i]['categories'].map((r, y) =>
                 <p key={y}>{posts[i]['categories'][y]}</p>
-              )}
-            </>
+              )} */}
+            </a>
           )}
         </div>
         <Footer/>
