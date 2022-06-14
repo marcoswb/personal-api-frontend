@@ -1,10 +1,10 @@
-.main-content a img{
+.contact img{
     width: 12rem;
     height: 3.2rem;
     border: 1px solid white;
 }
 
-.main-content a{
+.contact {
     padding-bottom: 1.5rem;
     top: 0;
     position:relative;
@@ -13,6 +13,6 @@
     -o-transition: top 0.4s ease-out;
 }
 
-.main-content a:hover {
+.contact:hover {
     top: -5px;
 }
