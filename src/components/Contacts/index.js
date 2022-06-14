@@ -18,8 +18,8 @@ export default function Contacts(){
 
       setLinkedin(response['linkedin_link'])
       setGithub(response['github_link'])
-      setEmail(response['email'])
-      setNumberPhone(response['number_phone'])
+      setEmail(`mailto:${response['email']}?subject=Contato%20via%20site`)
+      setNumberPhone(`https://wa.me/${response['number_phone']}`)
     }
 
     fetchMyAPI()
@@ -29,14 +29,18 @@ export default function Contacts(){
       <div>
         <Navbar/>
         <div class='main-content'>
-          <h3>linkedin:</h3>
-          <p>{linkedin}</p>
-          <h3>github:</h3>
-          <p>{github}</p>
-          <h3>email:</h3>
-          <p>{email}</p>
-          <h3>number_phone:</h3>
-          <p>{number_phone}</p>
+          <a href={linkedin} target="_blank" rel="noreferrer">
+            <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="logo LinkedIn"/>
+          </a>
+          <a href={github} target="_blank" rel="noreferrer">
+            <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="logo GitHub"/>
+          </a>
+          <a href={email} target="_blank" rel="noreferrer">
+            <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="logo Email"/>
+          </a>
+          <a href={number_phone} target="_blank" rel="noreferrer">
+            <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="logo WhatsApp"/>
+          </a>
         </div>
         <Footer/>
       </div>
