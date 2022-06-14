@@ -1,0 +1,15 @@
+.project {
+    padding-bottom: 2rem;
+    margin-bottom: 1rem;;
+    padding: 1rem;
+}
+
+.project h2{
+    line-height: 1;
+}
+
+.project:hover {
+    cursor: pointer;
+    border:0.5px solid #FFFFFF;
+    border-radius: 10px;
+}

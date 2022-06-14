@@ -24,7 +24,7 @@ export default function Blog(){
         <Navbar/>
         <div class='main-content'>
           {posts.map((x, i) =>
-            <a href={posts[i]["link"]} target="_blank" class='post'>
+            <a href={posts[i]["link"]} target="_blank" rel="noreferrer" class='post'>
               <h2>{posts[i]['name']}</h2>
               <h4>{posts[i]['description']}</h4>
               {/* <h4>categorias</h4>

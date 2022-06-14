@@ -23,15 +23,15 @@ export default function Projects(){
       <div>
         <Navbar/>
         <div class='main-content'>
-          <h3>projects:</h3>
-          {projects.map((x, i) =>
-            <>
-              <p key={i}>{projects[i]['name']}: {projects[i]['description']}: {projects[i]['link']}</p>
-              <h4>linguagens</h4>
-              {projects[i]['languages'].map((r, y) =>
-                <p key={y}>{projects[i]['languages'][y]}</p>
-              )}
-            </>
+        {projects.map((x, i) =>
+            <a href={projects[i]["link"]} target="_blank" rel="noreferrer" class='project'>
+              <h2>{projects[i]['name']}</h2>
+              <h4>{projects[i]['description']}</h4>
+              {/* <h4>categorias</h4>
+              {projects[i]['categories'].map((r, y) =>
+                <p key={y}>{projects[i]['categories'][y]}</p>
+              )} */}
+            </a>
           )}
         </div>
         <Footer/>
