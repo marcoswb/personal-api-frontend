@@ -1,7 +1,32 @@
+#content-list {
+    display: flex;
+    flex-direction: row;
+}
+
+#projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex: 3.3;
+}
+
+#project-languages {
+    flex: 0.7;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-left: 0.5rem;
+    padding-left: 2rem;
+}
+
+#project-languages h3{
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
 .project {
-    padding-bottom: 2rem;
-    margin-bottom: 1rem;;
-    padding: 1rem;
+    flex: 0 1 calc(33% - 1rem);
+    height: 10rem;
+    padding: 0.5rem;
 }
 
 .project h2{
@@ -11,5 +36,14 @@
 .project:hover {
     cursor: pointer;
     border:0.5px solid #FFFFFF;
-    border-radius: 10px;
+    border-radius: 5px;
+}
+
+#project-languages h3:hover{
+    cursor: pointer;
+}
+
+#project-languages ol li:hover{
+    color: #00CED1;
+    cursor: pointer;
 }
