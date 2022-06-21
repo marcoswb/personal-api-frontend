@@ -19,7 +19,7 @@ export default function Contacts(){
       setLinkedin(response['linkedin_link'])
       setGithub(response['github_link'])
       setEmail(`mailto:${response['email']}?subject=Contato%20via%20site`)
-      setNumberPhone(`https://wa.me/${response['number_phone']}`)
+      setNumberPhone(`https://api.whatsapp.com/send/?phone=${response['number_phone']}&app_absent=0`)
     }
 
     fetchMyAPI()
