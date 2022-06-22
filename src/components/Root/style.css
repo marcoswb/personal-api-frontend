@@ -17,6 +17,7 @@
 
 #about {
     display: flex;
+    flex-direction: column;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     justify-content: center;
@@ -24,6 +25,10 @@
     color: #FFFFFF;
     text-align: center;
     font-size: 1.2rem;
+}
+
+#about p{
+    padding-bottom: 1rem;
 }
 
 .subtitle {

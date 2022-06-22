@@ -9,7 +9,7 @@ export default function Root(){
   const [name, setName] = useState('')
   const [short_description, setShortDescription] = useState('')
   const [whatsapp_link, setWhatsappLink] = useState('')
-  const [about, setAbout] = useState('')
+  const [about, setAbout] = useState([])
   const [skills, setSkills] = useState([])
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function Root(){
       setName(response['name'])
       setShortDescription(response['short_description'])
       setWhatsappLink(`https://api.whatsapp.com/send/?phone=${response['number_phone']}&text=Olá ${response['name']}&app_absent=0`)
-      setAbout(response['about'])
+      setAbout(response['about'].split('\\n'))
       setSkills(response['skills'])
     }
 
@@ -37,7 +37,9 @@ export default function Root(){
             <a href={whatsapp_link} id="whatsapp-button">Vamos conversar?</a>
           </div>
           <div id='about'>
-            <p>{about}</p>
+          {skills.map((x, i) =>
+            <p>{about[i]}</p>
+          )}
           </div>
           <h2 class="subtitle">Skills:</h2>
           <div id='skills'>
