@@ -2,14 +2,33 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 6rem;
+    align-items: center;
+}
+
+#whatsapp-button {
+    width: 10rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    text-align: center;
+    color: #1E90FF;
 }
 
 #about {
     display: flex;
     margin-bottom: 2rem;
+    padding-bottom: 1rem;
     justify-content: center;
     align-items: center;
     color: #FFFFFF;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.subtitle {
+    text-align: center;
+    padding-bottom: 1rem;
 }
 
 #skills {
@@ -26,6 +45,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     padding-bottom: 1rem;
     padding-top: 1rem;
     margin-top: 0.5rem;
@@ -47,4 +67,9 @@
     font-size: 1.1rem;
     font-weight: bold;
     color: #1E90FF;
+}
+
+#whatsapp-button:hover {
+    color: black;
+    background-color: #4169E1;
 }

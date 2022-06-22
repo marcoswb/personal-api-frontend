@@ -34,12 +34,12 @@ export default function Root(){
           <div id='carousel'>
             <h1>Olá, meu nome é {name}.</h1>
             <h2>{short_description}</h2>
-            <a href={whatsapp_link}>Vamos conversar?</a>
+            <a href={whatsapp_link} id="whatsapp-button">Vamos conversar?</a>
           </div>
           <div id='about'>
             <p>{about}</p>
           </div>
-          <h3>Skills:</h3>
+          <h2 class="subtitle">Skills:</h2>
           <div id='skills'>
             {skills.map((x, i) =>
               <div class='item-skill'>
