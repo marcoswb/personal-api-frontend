@@ -26,7 +26,7 @@ export default function Experience(){
           {experiences.map((x, i) => 
           <div class='experience'>
             <h2>{experiences[i]['company']}</h2>
-            <h4>{experiences[i]['ocuppation']}</h4>
+            <h3>{experiences[i]['ocuppation']}</h3>
             <p key={i}>{experiences[i]['period']}</p>
           </div>
           )}
