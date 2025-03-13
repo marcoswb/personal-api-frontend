@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react'
 import Navbar from '../navbar'
 import Footer from '../footer'
@@ -5,6 +6,7 @@ import Footer from '../footer'
 import './style.css';
 
 export default function Root(){
+  const { t } = useTranslation();
 
   const [name, setName] = useState('')
   const [short_description, setShortDescription] = useState('')
@@ -32,16 +34,16 @@ export default function Root(){
         <Navbar/>
         <div class='main-content'>
           <div id='carousel'>
-            <h1>Olá, meu nome é {name}.</h1>
+            <h1>{t('greeting', { name })}</h1>
             <h2>{short_description}</h2>
-            <a href={whatsapp_link} id="whatsapp-button">Vamos conversar?</a>
+            <a href={whatsapp_link} id="whatsapp-button">{t('whatsappButton')}</a>
           </div>
           <div id='about'>
           {skills.map((x, i) =>
             <p>{about[i]}</p>
           )}
           </div>
-          <h2 class="subtitle">Skills:</h2>
+          <h2 class="subtitle">{t('skillsSubtitle')}</h2>
           <div id='skills'>
             {skills.map((x, i) =>
               <div class='item-skill'>

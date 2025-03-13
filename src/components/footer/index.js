@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next';
 
 import './style.css';
 
 export default function Footer(){
+  const { i18n } = useTranslation();
+
+  const handleChangeLanguage = (event) => {
+    const newLanguage = event.target.value;
+    i18n.changeLanguage(newLanguage);
+  };
 
   const [linkedin, setLinkedin] = useState('')
   const [github, setGithub] = useState('')
@@ -28,11 +35,15 @@ export default function Footer(){
     <footer>
       <div class="footer-content">
         <ul class="socials">
-          <li><a href={linkedin} target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin-square"></i></a></li>
-          <li><a href={github} target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></a></li>
-          <li><a href={email_link} target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a></li>
-          <li><a href={whatsapp_link} target="_blank" rel="noopener noreferrer"><i class="fa fa-whatsapp"></i></a></li>
+            <li><a href={linkedin} target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin-square"></i></a></li>
+            <li><a href={github} target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></a></li>
+            <li><a href={email_link} target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a></li>
+            <li><a href={whatsapp_link} target="_blank" rel="noopener noreferrer"><i class="fa fa-whatsapp"></i></a></li>
         </ul>
+        <select name="select" onChange={handleChangeLanguage} value={i18n.language}>
+          <option value="pt" selected>Português</option>
+          <option value="en">Inglês</option>
+        </select>
       </div>
     </footer>
   )

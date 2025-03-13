@@ -1,0 +1,6 @@
+{
+    "greeting": "Hello, my name is {{name}}.",
+    "description": "Welcome to my page!",
+    "whatsappButton": "Let's chat?",
+    "skillsSubtitle": "Skills:"
+  }
