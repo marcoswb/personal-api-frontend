@@ -2,5 +2,10 @@
     "greeting": "Olá, meu nome é {{name}}.",
     "description": "Bem-vindo à minha página!",
     "whatsappButton": "Vamos conversar?",
-    "skillsSubtitle": "Habilidades:"
+    "skillsSubtitle": "Habilidades:",
+    "languages_tools": "Linguages e Ferramentas",
+    "blog_topics": "Assuntos",
+    "portuguese": "Português",
+    "english": "Inglês",
+    "language": "Idioma"
   }

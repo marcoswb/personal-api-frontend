@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import './style.css';
 
 export default function Footer(){
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleChangeLanguage = (event) => {
     const newLanguage = event.target.value;
@@ -40,10 +40,13 @@ export default function Footer(){
             <li><a href={email_link} target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a></li>
             <li><a href={whatsapp_link} target="_blank" rel="noopener noreferrer"><i class="fa fa-whatsapp"></i></a></li>
         </ul>
-        <select name="select" onChange={handleChangeLanguage} value={i18n.language}>
-          <option value="pt" selected>Português</option>
-          <option value="en">Inglês</option>
-        </select>
+        <div id="footer-rigth">
+          <label for="language-select">{t('language')}: </label>
+          <select id="language-select" name="select" onChange={handleChangeLanguage} value={i18n.language}>
+            <option value="pt" selected>{t('portuguese')}</option>
+            <option value="en">{t('english')}</option>
+          </select>
+        </div>
       </div>
     </footer>
   )

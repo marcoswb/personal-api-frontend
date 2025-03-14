@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react'
 import Navbar from '../navbar'
 import Footer from '../footer'
@@ -5,6 +6,7 @@ import Footer from '../footer'
 import './style.css';
 
 export default function Blog(){
+  const { t } = useTranslation();
 
   const [posts, setPosts] = useState([])
   const [categories, setCategories] = useState([])
@@ -69,7 +71,7 @@ export default function Blog(){
             )}
           </div>
           <div id="blog-techs">
-            <h3 onClick={loadAllPosts}>Assuntos</h3>
+            <h3 onClick={loadAllPosts}>{t('blog_topics')}</h3>
             <ol>
               {categories.map((x, i) =>
                 <li onClick={filterPosts}>{categories[i]}</li>

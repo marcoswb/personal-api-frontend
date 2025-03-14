@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react'
 import Navbar from '../navbar'
 import Footer from '../footer'
@@ -5,6 +6,7 @@ import Footer from '../footer'
 import './style.css';
 
 export default function Projects(){
+  const { t } = useTranslation();
 
   const [projects, setProjects] = useState([])
   const [languages, setLanguages] = useState([])
@@ -69,7 +71,7 @@ export default function Projects(){
             )}
           </div>
           <div id="project-languages">
-            <h3 onClick={loadAllProjects}>Linguages e Ferramentas</h3>
+            <h3 onClick={loadAllProjects}>{t('languages_tools')}</h3>
             <ol>
               {languages.map((x, i) =>
                 <li onClick={filterLanguages}>{languages[i]}</li>
