@@ -1,23 +1,48 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react'
 import Navbar from '../navbar'
 import Footer from '../footer'
+import { fetchFormationData } from '../../api';
 
 import './style.css';
 
 export default function Formation(){
+  const { i18n } = useTranslation();
 
   const [formations, setFormations] = useState([])
+  
+  async function loadAllFormation(){
+    let response;
 
-  useEffect(() => {
-    async function fetchMyAPI() {
-      let response = await fetch(`${process.env.REACT_APP_ENDPOINT_API}/formation`)
-      response = await response.json()
-
-      setFormations(response)
+    if(sessionStorage.getItem('formationData') == null){
+      response = await fetchFormationData(i18n.language)
+    } else {
+      response = loadDataStorage(i18n.language)
     }
 
-    fetchMyAPI()
+    setFormations(response)
+  }
+
+  function loadDataStorage(language){
+    const savedData = sessionStorage.getItem('formationData');
+    const result = savedData ? JSON.parse(savedData) : null;
+    return result[language];
+  }
+
+  useEffect(() => {
+    loadAllFormation()
   }, [])
+
+  useEffect(() => {
+      const handleLanguageChange = (language) => {
+        loadAllFormation()
+      };
+  
+      i18n.on('languageChanged', handleLanguageChange);
+      return () => {
+        i18n.off('languageChanged', handleLanguageChange);
+      };
+    }, [i18n, formations]);
       
   return (
       <div>
