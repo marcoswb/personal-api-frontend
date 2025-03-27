@@ -1,9 +1,11 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react'
 import $ from 'jquery'
 
 import './style.css';
 
 export default function Footer(){
+  const { t } = useTranslation();
 
   const [full_name, setFullName] = useState('')
 
@@ -30,22 +32,22 @@ export default function Footer(){
         </h1>
         <ul id="navbar">
             <li>
-                <a href="/">Home</a>
+                <a href="/">{t('home')}</a>
             </li>
             <li>
-                <a href="/experience">Experiência</a>
+                <a href="/experience">{t('experience')}</a>
             </li>
             <li>
-                <a href="/formation">Formação</a>
+                <a href="/formation">{t('formation')}</a>
             </li>
             <li>
-                <a href="/projects">Projetos</a>
+                <a href="/projects">{t('projects')}</a>
             </li>
             <li>
-                <a href="/blog">Blog</a>
+                <a href="/blog">{t('blog')}</a>
             </li>
             <li>
-                <a href="/contacts">Contatos</a>
+                <a href="/contacts">{t('Contacts')}</a>
             </li>
         </ul>
         <div className="nav__icon" onClick={handleClickToggleMenu}>

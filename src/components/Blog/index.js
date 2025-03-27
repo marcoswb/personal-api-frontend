@@ -13,7 +13,14 @@ export default function Blog(){
   const [categories, setCategories] = useState([])
 
   async function loadAllPosts(){
-    let response = await fetchBlogData(i18n.language)
+    let response;
+
+    if(sessionStorage.getItem('blogData') == null){
+      response = await fetchBlogData(i18n.language)
+    } else {
+      response = loadDataStorage(i18n.language)
+    }
+    
     setPosts(response)
   }
 
