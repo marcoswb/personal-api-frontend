@@ -1,18 +1,30 @@
 import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react'
 import $ from 'jquery'
+import { fetchRootData } from '../../api';
 
 import './style.css';
 
 export default function Footer(){
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [full_name, setFullName] = useState('')
 
+  function loadDataStorage(language){
+    const savedData = sessionStorage.getItem('rootData');
+    const result = savedData ? JSON.parse(savedData) : null;
+    return result[language];
+  }
+
   useEffect(() => {
     async function fetchMyAPI() {
-      let response = await fetch(process.env.REACT_APP_ENDPOINT_API)
-      response = await response.json()
+      let response;
+  
+      if(sessionStorage.getItem('rootData') == null){
+        response = await fetchRootData(i18n.language)
+      } else {
+        response = loadDataStorage(i18n.language)
+      }
 
       setFullName(response['full_name'])
     }

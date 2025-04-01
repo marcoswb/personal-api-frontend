@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next';
+import { fetchRootData } from '../../api';
 
 import './style.css';
 
@@ -16,10 +17,21 @@ export default function Footer(){
   const [email_link, setEmailLink] = useState('')
   const [whatsapp_link, setWhatsappLink] = useState('')
 
+  function loadDataStorage(language){
+    const savedData = sessionStorage.getItem('rootData');
+    const result = savedData ? JSON.parse(savedData) : null;
+    return result[language];
+  }
+
   useEffect(() => {
     async function fetchMyAPI() {
-      let response = await fetch(process.env.REACT_APP_ENDPOINT_API)
-      response = await response.json()
+      let response;
+  
+      if(sessionStorage.getItem('rootData') == null){
+        response = await fetchRootData(i18n.language)
+      } else {
+        response = loadDataStorage(i18n.language)
+      }
 
       setLinkedin(response['linkedin_link'])
       setGithub(response['github_link'])
