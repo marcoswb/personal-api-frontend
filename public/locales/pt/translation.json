@@ -1,0 +1,17 @@
+{
+    "greeting": "Olá, meu nome é {{name}}.",
+    "description": "Bem-vindo à minha página!",
+    "whatsappButton": "Vamos conversar?",
+    "skillsSubtitle": "Habilidades:",
+    "languages_tools": "Linguages e Ferramentas",
+    "blog_topics": "Assuntos",
+    "portuguese": "Português",
+    "english": "Inglês",
+    "language": "Idioma",
+    "home": "Home",
+    "experience": "Experiência",
+    "formation": "Formação",
+    "projects": "Projetos",
+    "blog": "Blog",
+    "Contacts": "Contatos"
+  }

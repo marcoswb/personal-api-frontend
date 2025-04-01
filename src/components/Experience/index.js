@@ -1,23 +1,48 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react'
 import Navbar from '../navbar'
 import Footer from '../footer'
+import { fetchExperienceData } from '../../api';
 
 import './style.css';
 
 export default function Experience(){
+  const { i18n } = useTranslation();
 
   const [experiences, setExperiences] = useState([])
+  
+  async function loadAllExperiences(){
+    let response;
 
-  useEffect(() => {
-    async function fetchMyAPI() {
-      let response = await fetch(`${process.env.REACT_APP_ENDPOINT_API}/experience`)
-      response = await response.json()
-
-      setExperiences(response)
+    if(sessionStorage.getItem('experienceData') == null){
+      response = await fetchExperienceData(i18n.language)
+    } else {
+      response = loadDataStorage(i18n.language)
     }
 
-    fetchMyAPI()
+    setExperiences(response)
+  }
+
+  function loadDataStorage(language){
+    const savedData = sessionStorage.getItem('experienceData');
+    const result = savedData ? JSON.parse(savedData) : null;
+    return result[language];
+  }
+
+  useEffect(() => {
+    loadAllExperiences()
   }, [])
+
+  useEffect(() => {
+      const handleLanguageChange = (language) => {
+        loadAllExperiences()
+      };
+  
+      i18n.on('languageChanged', handleLanguageChange);
+      return () => {
+        i18n.off('languageChanged', handleLanguageChange);
+      };
+    }, [i18n, experiences]);
       
   return (
       <div>
