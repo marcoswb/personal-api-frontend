@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react'
 import Navbar from '../navbar'
 import Footer from '../footer'
-import { fetchRootData } from '../../api';
+import { fetchRootData, fetchExperienceData, fetchFormationData, fetchProjectsData, fetchBlogData } from '../../api';
 
 import './style.css';
 
@@ -37,8 +37,16 @@ export default function Root(){
     return result[language];
   }
 
+  async function loadAnotherContents(){
+    await fetchExperienceData(i18n.language)
+    await fetchFormationData(i18n.language)
+    await fetchProjectsData(i18n.language)
+    await fetchBlogData(i18n.language)
+  }
+
   useEffect(() => {
     loadAll()
+    loadAnotherContents()
   }, [])
 
   useEffect(() => {
