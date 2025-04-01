@@ -41,3 +41,14 @@ export async function fetchFormationData(language) {
 
     return main_response;
 }
+
+export async function fetchRootData(language) {
+    let response = await fetch(process.env.REACT_APP_ENDPOINT_API)
+    
+    let result = await response.json()
+    let main_response = result[language]
+
+    sessionStorage.setItem('rootData', JSON.stringify(result));
+
+    return main_response;
+}
