@@ -44,6 +44,7 @@ A estrutura de arquivos está da seguinte maneira:
 
 ```bash
 ├── public/
+│   └── locales/
 |
 ├── src/
 │   ├── components/
@@ -94,6 +95,7 @@ Com isso o projeto será criado com todas as dependências devidamente instalada
 Nesta seção explicarei os diretórios e arquivos utilizados no projeto:
 
 - **public/** - Contém alguns arquivos padrões criados pelo React, entre eles o "index.html" que é o primeiro html chamado ao executar o Projeto;
+  - **locales**- Diretório que armazena arquivos json para tradução de conteúdos estáticos da aplicação. 
 - **src/** - Diretório que contém basicamente todo o código fonte que foi escrito;
   - **components/** - Diretório que contém componentes React, cada pasta é um componente basicamente, com seu arquivo js e css próprio;
   - **App.css** - Arquivo css global do projeto;
