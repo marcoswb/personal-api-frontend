@@ -20,6 +20,7 @@ export default function Root(){
 
     if(sessionStorage.getItem('rootData') == null){
       response = await fetchRootData(i18n.language)
+      loadAnotherContents()
     } else {
       response = loadDataStorage(i18n.language)
     }
@@ -46,7 +47,6 @@ export default function Root(){
 
   useEffect(() => {
     loadAll()
-    loadAnotherContents()
   }, [])
 
   useEffect(() => {
