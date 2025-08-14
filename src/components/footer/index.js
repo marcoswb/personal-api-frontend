@@ -57,6 +57,7 @@ export default function Footer(){
           <select id="language-select" name="select" onChange={handleChangeLanguage} value={i18n.language}>
             <option value="pt" selected>{t('portuguese')}</option>
             <option value="en">{t('english')}</option>
+            <option value="es">{t('spanish')}</option>
           </select>
         </div>
       </div>
