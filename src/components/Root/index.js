@@ -1,88 +1,105 @@
 import { useTranslation } from 'react-i18next';
-import React, { useState, useEffect } from 'react'
-import Navbar from '../navbar'
-import Footer from '../footer'
-import { fetchRootData, fetchExperienceData, fetchFormationData, fetchProjectsData, fetchBlogData } from '../../api';
+import React, { useEffect, useState } from 'react';
+import Navbar from '../navbar';
+import Footer from '../footer';
+import {
+  fetchRootData,
+  fetchExperienceData,
+  fetchFormationData,
+  fetchProjectsData,
+  fetchBlogData,
+} from '../../api';
+import { Hero, Projects, Experience, Stack, About, Contact } from './sections';
 
 import './style.css';
 
-export default function Root(){
-  const { t, i18n } = useTranslation();
+function languageKey(i18n) {
+  const code = i18n.resolvedLanguage || i18n.language || 'en';
+  return code.split('-')[0];
+}
 
-  const [name, setName] = useState('')
-  const [short_description, setShortDescription] = useState('')
-  const [whatsapp_link, setWhatsappLink] = useState('')
-  const [about, setAbout] = useState('')
-  const [skills, setSkills] = useState([])
-  
-  async function loadAll(){
-    let response;
+function readStored(storageKey, lang) {
+  const saved = sessionStorage.getItem(storageKey);
+  if (!saved) return undefined;
+  try {
+    const parsed = JSON.parse(saved);
+    if (parsed[lang] != null) return parsed[lang];
+    if (parsed.en != null) return parsed.en;
+    return null;
+  } catch {
+    return undefined;
+  }
+}
 
-    if(sessionStorage.getItem('rootData') == null){
-      response = await fetchRootData(i18n.language)
-      loadAnotherContents()
-    } else {
-      response = loadDataStorage(i18n.language)
+export default function Root() {
+  const { i18n } = useTranslation();
+  const [profile, setProfile] = useState(null);
+  const [projects, setProjects] = useState([]);
+  const [experiences, setExperiences] = useState([]);
+  const [formations, setFormations] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const lang = languageKey(i18n);
+
+    async function load(storageKey, fetcher) {
+      const stored = readStored(storageKey, lang);
+      if (stored !== undefined) return stored;
+      try {
+        return await fetcher(lang);
+      } catch {
+        return null;
+      }
     }
 
-    setName(response['name'])
-    setShortDescription(response['short_description'])
-    setWhatsappLink(`https://api.whatsapp.com/send/?phone=${response['number_phone']}&text=Olá ${response['name']}&app_absent=0`)
-    setAbout(response['about'])
-    setSkills(response['skills'])
-  }
+    async function loadAll() {
+      const [root, projectData, experienceData, formationData, blogData] = await Promise.all([
+        load('rootData', fetchRootData),
+        load('projectsData', fetchProjectsData),
+        load('experienceData', fetchExperienceData),
+        load('formationData', fetchFormationData),
+        load('blogData', fetchBlogData),
+      ]);
 
-  function loadDataStorage(language){
-    const savedData = sessionStorage.getItem('rootData');
-    const result = savedData ? JSON.parse(savedData) : null;
-    return result[language];
-  }
+      if (cancelled) return;
+      setProfile(root && typeof root === 'object' && !Array.isArray(root) ? root : {});
+      setProjects(Array.isArray(projectData) ? projectData : []);
+      setExperiences(Array.isArray(experienceData) ? experienceData : []);
+      setFormations(Array.isArray(formationData) ? formationData : []);
+      setPosts(Array.isArray(blogData) ? blogData : []);
+      setReady(true);
+    }
 
-  async function loadAnotherContents(){
-    await fetchExperienceData(i18n.language)
-    await fetchFormationData(i18n.language)
-    await fetchProjectsData(i18n.language)
-    await fetchBlogData(i18n.language)
-  }
+    loadAll();
+    return () => {
+      cancelled = true;
+    };
+  }, [i18n, i18n.language]);
 
   useEffect(() => {
-    loadAll()
-  }, [])
+    document.documentElement.lang = languageKey(i18n);
+  }, [i18n, i18n.language]);
 
   useEffect(() => {
-      const handleLanguageChange = (language) => {
-        loadAll()
-      };
-  
-      i18n.on('languageChanged', handleLanguageChange);
-      return () => {
-        i18n.off('languageChanged', handleLanguageChange);
-      };
-    }, [i18n, name]);
+    if (!ready || !window.location.hash) return;
+    const target = document.querySelector(window.location.hash);
+    if (target) target.scrollIntoView();
+  }, [ready]);
 
   return (
-      <div>
-        <Navbar/>
-        <div class='main-content'>
-          <div id='carousel'>
-            <h1>{t('greeting', { name })}</h1>
-            <h2>{short_description}</h2>
-            <a href={whatsapp_link} id="whatsapp-button">{t('whatsappButton')}</a>
-          </div>
-          <div id='about'>
-          <p>{about}</p>
-          </div>
-          <h2 class="subtitle">{t('skillsSubtitle')}</h2>
-          <div id='skills'>
-            {skills.map((x, i) =>
-              <div class='item-skill'>
-                <img src={skills[i]['link_icon']} alt='imagem da skill'/>
-                <p key={i}>{skills[i]['name']}</p>
-              </div>
-            )}
-          </div>
-        </div>
-        <Footer/>
-      </div>
-  )
+    <div>
+      <Navbar fullName={profile?.full_name || profile?.name || ''} />
+      <main className="page" id="top">
+        <Hero profile={profile} />
+        <Projects projects={projects} />
+        <Experience experiences={experiences} formations={formations} />
+        <Stack skills={profile?.skills} />
+        <About about={profile?.about} />
+        <Contact profile={profile} />
+      </main>
+      <Footer posts={posts} />
+    </div>
+  );
 }

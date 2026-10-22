@@ -1,27 +1,20 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Root from './components/Root';
-import Experience from './components/Experience';
-import Formation from './components/Formation';
-import Projects from './components/Projects';
-import Blog from './components/Blog';
-import Contacts from './components/Contacts';
 
 import './App.css';
 
 function App() {
   return (
-    <div>
-      <Routes>
-        <Route exact path='/' element={<Root/>}/>
-        <Route path='/experience' element={<Experience/>} />
-        <Route path='/formation' element={<Formation/>} />
-        <Route path='/projects' element={<Projects/>} />
-        <Route path='/blog' element={<Blog/>} />
-        <Route path='/contacts' element={<Contacts/>} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Root />} />
+      <Route path="/projects" element={<Navigate to={{ pathname: '/', hash: '#projects' }} replace />} />
+      <Route path="/experience" element={<Navigate to={{ pathname: '/', hash: '#experience' }} replace />} />
+      <Route path="/formation" element={<Navigate to={{ pathname: '/', hash: '#experience' }} replace />} />
+      <Route path="/contacts" element={<Navigate to={{ pathname: '/', hash: '#contact' }} replace />} />
+      <Route path="/blog" element={<Navigate to={{ pathname: '/', hash: '#contact' }} replace />} />
+    </Routes>
   );
 }
 

@@ -1,46 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap');
+
+:root {
+  --bg: #121316;
+  --text: #ececee;
+  --muted: #a1a1aa;
+  --accent: #8eb6ff;
+  --line: rgba(255, 255, 255, 0.1);
+  --max: 720px;
+}
 
 * {
-    padding: 0;
-    margin: 0;
-    background-color: #191a1d;
-    font-family: 'Sans', 'Courier New', Courier, monospace;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.main-content {
-    display: flex;
-    flex-direction: column;
-    padding: 3rem 3rem 5rem 3rem;
-    margin-top: 6rem;
-    position:absolute;
-    top: 2rem;
-    bottom:1rem;
-    left:0px;
-    right:0px;
-    overflow:auto;
-    color: #FFFFFF;
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
 }
 
-h1 {
-    color: #1E90FF;
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
-h2 {
-    color: #00CED1;
-}
-
-h3 {
-    color: #4169E1;
-}
-
-h4 {
-    color: #1E90FF;
+h1, h2, h3 {
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
 }
 
 a {
-    text-decoration: none;
+  color: var(--accent);
+  text-decoration: none;
 }
 
 a:hover {
-    color: #1E90FF;
+  text-decoration: underline;
+}
+
+button, select {
+  font: inherit;
+  color: var(--text);
 }

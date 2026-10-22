@@ -1,72 +1,53 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import React, { useState, useEffect } from 'react'
-import $ from 'jquery'
-import { fetchRootData } from '../../api';
 
 import './style.css';
 
-export default function Footer(){
+const LINKS = [
+  ['projects', '#projects'],
+  ['experience', '#experience'],
+  ['stack', '#stack'],
+  ['about', '#about'],
+  ['contact', '#contact'],
+];
+
+export default function Navbar({ fullName }) {
   const { t, i18n } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const lang = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
 
-  const [full_name, setFullName] = useState('')
-
-  function loadDataStorage(language){
-    const savedData = sessionStorage.getItem('rootData');
-    const result = savedData ? JSON.parse(savedData) : null;
-    return result[language];
-  }
-
-  useEffect(() => {
-    async function fetchMyAPI() {
-      let response;
-  
-      if(sessionStorage.getItem('rootData') == null){
-        response = await fetchRootData(i18n.language)
-      } else {
-        response = loadDataStorage(i18n.language)
-      }
-
-      setFullName(response['full_name'])
-    }
-
-    fetchMyAPI()
-  }, [])
-
-  function handleClickToggleMenu(){
-    $(this).toggleClass('active');
-    $('#navbar').slideToggle();
+  function handleChangeLanguage(event) {
+    i18n.changeLanguage(event.target.value);
+    setOpen(false);
   }
 
   return (
-    <nav>
-        <h1>
-            <a id='link_root_path' href="/">{full_name}</a>
-        </h1>
-        <ul id="navbar">
-            <li>
-                <a href="/">{t('home')}</a>
-            </li>
-            <li>
-                <a href="/experience">{t('experience')}</a>
-            </li>
-            <li>
-                <a href="/formation">{t('formation')}</a>
-            </li>
-            <li>
-                <a href="/projects">{t('projects')}</a>
-            </li>
-            <li>
-                <a href="/blog">{t('blog')}</a>
-            </li>
-            <li>
-                <a href="/contacts">{t('Contacts')}</a>
-            </li>
-        </ul>
-        <div className="nav__icon" onClick={handleClickToggleMenu}>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
-  )
+    <header className="site-header">
+      <a className="brand" href="#top">{fullName}</a>
+      <button
+        type="button"
+        className="nav-toggle"
+        aria-expanded={open}
+        aria-label={t('menu')}
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+      <nav className={open ? 'nav-links open' : 'nav-links'}>
+        {LINKS.map(([key, href]) => (
+          <a key={key} href={href} onClick={() => setOpen(false)}>{t(key)}</a>
+        ))}
+        <label className="lang">
+          <span className="visually-hidden">{t('language')}</span>
+          <select aria-label={t('language')} value={['en', 'pt', 'es'].includes(lang) ? lang : 'en'} onChange={handleChangeLanguage}>
+            <option value="en">{t('english')}</option>
+            <option value="pt">{t('portuguese')}</option>
+            <option value="es">{t('spanish')}</option>
+          </select>
+        </label>
+      </nav>
+    </header>
+  );
 }
