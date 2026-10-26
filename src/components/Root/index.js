@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import Navbar from '../navbar';
-import Footer from '../footer';
 import {
   fetchRootData,
   fetchExperienceData,
@@ -9,7 +8,15 @@ import {
   fetchProjectsData,
   fetchBlogData,
 } from '../../api';
-import { Hero, Projects, Experience, Stack, About, Contact } from './sections';
+import {
+  Hero,
+  Projects,
+  Experience,
+  Stack,
+  About,
+  Writing,
+  Contact,
+} from './sections';
 
 import './style.css';
 
@@ -93,13 +100,13 @@ export default function Root() {
       <Navbar fullName={profile?.full_name || profile?.name || ''} />
       <main className="page" id="top">
         <Hero profile={profile} />
+        <About about={profile?.about} />
+        <Stack skills={profile?.skills} />
         <Projects projects={projects} />
         <Experience experiences={experiences} formations={formations} />
-        <Stack skills={profile?.skills} />
-        <About about={profile?.about} />
+        <Writing posts={posts} />
         <Contact profile={profile} />
       </main>
-      <Footer posts={posts} />
     </div>
   );
 }

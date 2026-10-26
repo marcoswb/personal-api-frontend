@@ -1,16 +1,8 @@
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { sortFeaturedProjects, tagsFrom } from './projectUtils';
 
 const CATEGORIES = ['language', 'framework', 'data', 'ops', 'other'];
-
-function tagsFrom(languages) {
-  if (Array.isArray(languages)) {
-    return languages.map((item) => String(item).trim()).filter(Boolean);
-  }
-  if (typeof languages === 'string') {
-    return languages.split(',').map((item) => item.trim()).filter(Boolean);
-  }
-  return [];
-}
 
 function highlightsFrom(item) {
   if (Array.isArray(item?.highlights)) {
@@ -62,13 +54,14 @@ export function Hero({ profile }) {
   );
 }
 
-export function Projects({ projects }) {
+export function ProjectList({ projects, showHeading = false }) {
   const { t } = useTranslation();
   const items = Array.isArray(projects) ? projects : [];
 
   return (
-    <section id="projects">
-      <h2 className="section-label">{t('projects')}</h2>
+    <section id={showHeading ? undefined : 'projects'} className={showHeading ? 'projects-all' : undefined}>
+      {showHeading ? <h1 className="page-title">{t('allProjects')}</h1> : null}
+      {!showHeading ? <h2 className="section-label">{t('projects')}</h2> : null}
       <div className="project-list">
         {items.map((project, index) => {
           const tags = tagsFrom(project.languages);
@@ -92,6 +85,24 @@ export function Projects({ projects }) {
         })}
       </div>
     </section>
+  );
+}
+
+export function Projects({ projects }) {
+  const { t } = useTranslation();
+  const items = sortFeaturedProjects(projects);
+  const total = Array.isArray(projects) ? projects.length : 0;
+  const showViewAll = total > 0 && total > items.length;
+
+  return (
+    <div className="projects-section">
+      <ProjectList projects={items} />
+      {showViewAll ? (
+        <p className="view-all">
+          <Link to="/projects">{t('viewAllProjects')}</Link>
+        </p>
+      ) : null}
+    </div>
   );
 }
 
@@ -123,7 +134,7 @@ export function Experience({ experiences, formations }) {
         })}
       </div>
       {studies.length > 0 ? (
-        <div className="education">
+        <div className="education" id="education">
           <h3>{t('formation')}</h3>
           {studies.map((item, index) => (
             <p key={item.id ?? index}>
@@ -177,6 +188,26 @@ export function About({ about }) {
     <section id="about">
       <h2 className="section-label">{t('about')}</h2>
       {about ? <p className="about-copy">{about}</p> : null}
+    </section>
+  );
+}
+
+export function Writing({ posts }) {
+  const { t } = useTranslation();
+  const items = Array.isArray(posts) ? posts.filter((post) => post?.link) : [];
+
+  if (items.length === 0) return null;
+
+  return (
+    <section id="writing">
+      <h2 className="section-label">{t('blog')}</h2>
+      <ul className="writing-list">
+        {items.map((post, index) => (
+          <li key={post.id ?? index}>
+            <a href={post.link} target="_blank" rel="noreferrer">{post.name}</a>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

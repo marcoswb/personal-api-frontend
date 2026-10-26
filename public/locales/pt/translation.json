@@ -6,6 +6,10 @@
   "contact": "Contato",
   "formation": "Formação",
   "blog": "Escritos",
+  "writing": "Escritos",
+  "viewAllProjects": "Ver todos os projetos",
+  "allProjects": "Todos os projetos",
+  "backToHome": "Voltar ao início",
   "github": "GitHub",
   "linkedin": "LinkedIn",
   "email": "Email",
@@ -19,6 +23,5 @@
   "category_data": "Dados",
   "category_ops": "Infra",
   "category_other": "Outros",
-  "menu": "Menu",
-  "builtWith": "Feito com React e uma API em Python"
+  "menu": "Menu"
 }

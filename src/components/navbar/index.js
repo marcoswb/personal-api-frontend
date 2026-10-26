@@ -4,11 +4,12 @@ import { useTranslation } from 'react-i18next';
 import './style.css';
 
 const LINKS = [
-  ['projects', '#projects'],
-  ['experience', '#experience'],
-  ['stack', '#stack'],
-  ['about', '#about'],
-  ['contact', '#contact'],
+  ['about', '/#about'],
+  ['stack', '/#stack'],
+  ['projects', '/#projects'],
+  ['experience', '/#experience'],
+  ['writing', '/#writing'],
+  ['contact', '/#contact'],
 ];
 
 export default function Navbar({ fullName }) {
@@ -23,7 +24,7 @@ export default function Navbar({ fullName }) {
 
   return (
     <header className="site-header">
-      <a className="brand" href="#top">{fullName}</a>
+      <a className="brand" href="/#top">{fullName}</a>
       <button
         type="button"
         className="nav-toggle"

@@ -1,0 +1,15 @@
+.projects-page {
+  padding-top: 5rem;
+}
+
+.back-link {
+  margin-bottom: 1.5rem;
+}
+
+.back-link a {
+  color: var(--muted);
+}
+
+.back-link a:hover {
+  color: var(--accent);
+}

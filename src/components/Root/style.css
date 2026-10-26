@@ -37,6 +37,7 @@ section {
   max-width: 65ch;
   font-size: 1.05rem;
   white-space: pre-line;
+  text-align: justify;
 }
 
 .cta-row {
@@ -209,6 +210,38 @@ section {
 
 .contact-list a:hover {
   color: var(--accent);
+}
+
+.view-all {
+  margin-top: 1rem;
+}
+
+.view-all a {
+  color: var(--muted);
+}
+
+.view-all a:hover {
+  color: var(--accent);
+}
+
+.writing-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.writing-list a {
+  color: var(--text);
+}
+
+.writing-list a:hover {
+  color: var(--accent);
+}
+
+.page-title {
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  margin-bottom: 1.35rem;
 }
 
 @media (max-width: 640px) {
