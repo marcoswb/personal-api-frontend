@@ -12,6 +12,9 @@ i18n
       loadPath: '/locales/{{lng}}/translation.json',
     },
     fallbackLng: 'en',
+    supportedLngs: ['en', 'pt', 'es'],
+    load: 'languageOnly',
+    nonExplicitSupportedLngs: true,
     interpolation: {
       escapeValue: false,
     },
